@@ -19,4 +19,5 @@ data class SessionState(
     var autoBrightness: Boolean? = null,
     var headsUp: Boolean? = null,
     var threeScreenshot: Boolean? = null,
+    var navbarToggle: Boolean? = null,
 )

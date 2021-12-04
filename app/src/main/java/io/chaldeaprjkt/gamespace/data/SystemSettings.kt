@@ -56,6 +56,11 @@ class SystemSettings(private val context: Context) {
         set(it) {
             Settings.System.putInt(resolver, Settings.System.THREE_FINGER_GESTURE, it.toInt())
         }
+    var navbarToggle
+        get() = Settings.System.getInt(resolver, Settings.System.FORCE_SHOW_NAVBAR, 1) == 1
+        set(it) {
+            Settings.System.putInt(resolver, Settings.System.FORCE_SHOW_NAVBAR, it.toInt())
+        }
 
     var userGames
         get() =
@@ -89,13 +94,18 @@ class SystemSettings(private val context: Context) {
         set(it) {
             Settings.System.putInt(resolver, KEY_3SCREENSHOT_DISABLE, it.toInt())
         }
-
+    var userNoNavbar
+        get() = Settings.System.getInt(resolver, KEY_NAVBAR_DISABLE, 0) == 1
+        set(it) {
+            Settings.System.putInt(resolver, KEY_NAVBAR_DISABLE, it.toInt())
+        }
     private fun Boolean.toInt() = if (this) 1 else 0
 
     fun applyUserSettings(session: SessionState) {
         session.headsUp = systemHeadsUp
         session.autoBrightness = autoBrightness
         session.threeScreenshot = threeScreenshot
+        session.navbarToggle = navbarToggle
         if (userNoHeadsUp) {
             systemHeadsUp = false
         }
@@ -104,6 +114,9 @@ class SystemSettings(private val context: Context) {
         }
         if (userNoThreeScreenshot) {
             threeScreenshot = false
+        }
+        if (userNoNavbar) {
+            navbarToggle = false
         }
     }
 
@@ -117,6 +130,9 @@ class SystemSettings(private val context: Context) {
         if (userNoThreeScreenshot) {
             session.threeScreenshot?.let { threeScreenshot = it }
         }
+        if (userNoNavbar) {
+            session.navbarToggle?.let { navbarToggle = it }
+        }
     }
 
     companion object {
@@ -124,5 +140,6 @@ class SystemSettings(private val context: Context) {
         const val KEY_HEADS_UP_DISABLE = "gamespace_heads_up_disabled"
         const val KEY_AUTO_BRIGHTNESS_DISABLE = "gamespace_auto_brightness_disabled"
         const val KEY_3SCREENSHOT_DISABLE = "gamespace_tfgesture_disabled"
+        const val KEY_NAVBAR_DISABLE = "gamespace_navbar_disabled"
     }
 }
