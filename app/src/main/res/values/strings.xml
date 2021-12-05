@@ -41,5 +41,6 @@
         <item>Battery</item>
     </string-array>
     <string name="heads_up_title">Heads-up</string>
+    <string name="navbar_title">Navigation bar</string>
     <string name="fps_Info_title">FPS Info</string>
 </resources>
