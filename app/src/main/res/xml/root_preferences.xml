@@ -38,6 +38,11 @@
             android:key="gamespace_navbar_disabled"
             android:summary="@string/navbar_disabled_summary"
             android:title="@string/navbar_disabled_title" />
+
+        <SwitchPreference
+            android:key="gamespace_stay_awake"
+            android:summary="@string/stay_awake_summary"
+            android:title="@string/stay_awake_title" />
     </PreferenceCategory>
 
     <io.chaldeaprjkt.gamespace.preferences.AppListPreferences
