@@ -21,10 +21,9 @@ import android.view.View
 import io.chaldeaprjkt.gamespace.R
 import io.chaldeaprjkt.gamespace.data.SystemSettings
 
-class NavbarTile : BaseTile {
-    constructor(ctx: Context) : super(ctx)
-    constructor(ctx: Context, attrs: AttributeSet?) : super(ctx, attrs)
-    constructor(ctx: Context, attrs: AttributeSet?, dsAttr: Int) : super(ctx, attrs, dsAttr)
+class NavbarTile @JvmOverloads constructor(
+    context: Context, attrs: AttributeSet? = null
+) : BaseTile(context, attrs) {
 
     private val settings by lazy { SystemSettings(context) }
 
