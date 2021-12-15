@@ -22,6 +22,7 @@ import io.chaldeaprjkt.gamespace.utils.GameModeUtils
 class SystemSettings(private val context: Context) {
 
     private val resolver = context.contentResolver
+    private val appSettings by lazy { AppSettings(context) }
 
     var systemHeadsUp
         get() =
@@ -77,28 +78,6 @@ class SystemSettings(private val context: Context) {
             GameModeUtils.setupBatteryMode(context, games.isNotEmpty())
         }
 
-    var userNoHeadsUp
-        get() = Settings.System.getInt(resolver, KEY_HEADS_UP_DISABLE, 0) == 1
-        set(it) {
-            Settings.System.putInt(resolver, KEY_HEADS_UP_DISABLE, it.toInt())
-        }
-
-    var userNoAutoBrightness
-        get() = Settings.System.getInt(resolver, KEY_AUTO_BRIGHTNESS_DISABLE, 0) == 1
-        set(it) {
-            Settings.System.putInt(resolver, KEY_AUTO_BRIGHTNESS_DISABLE, it.toInt())
-        }
-
-    var userNoThreeScreenshot
-        get() = Settings.System.getInt(resolver, KEY_3SCREENSHOT_DISABLE, 0) == 1
-        set(it) {
-            Settings.System.putInt(resolver, KEY_3SCREENSHOT_DISABLE, it.toInt())
-        }
-    var userNoNavbar
-        get() = Settings.System.getInt(resolver, KEY_NAVBAR_DISABLE, 0) == 1
-        set(it) {
-            Settings.System.putInt(resolver, KEY_NAVBAR_DISABLE, it.toInt())
-        }
     private fun Boolean.toInt() = if (this) 1 else 0
 
     fun applyUserSettings(session: SessionState?) {
@@ -107,29 +86,29 @@ class SystemSettings(private val context: Context) {
         session.autoBrightness = autoBrightness
         session.threeScreenshot = threeScreenshot
         session.navbarToggle = navbarToggle
-        if (userNoHeadsUp) {
+        if (appSettings.noHeadsUp) {
             systemHeadsUp = false
         }
-        if (userNoAutoBrightness) {
+        if (appSettings.noAutoBrightness) {
             autoBrightness = false
         }
-        if (userNoThreeScreenshot) {
+        if (appSettings.noThreeScreenshot) {
             threeScreenshot = false
         }
-        if (userNoNavbar) {
+        if (appSettings.noNavbar) {
             navbarToggle = false
         }
     }
 
     fun restoreUserSettings(session: SessionState?) {
         session ?: return
-        if (userNoHeadsUp) {
+        if (appSettings.noHeadsUp) {
             session.headsUp?.let { systemHeadsUp = it }
         }
-        if (userNoAutoBrightness) {
+        if (appSettings.noAutoBrightness) {
             session.autoBrightness?.let { autoBrightness = it }
         }
-        if (userNoThreeScreenshot) {
+        if (appSettings.noThreeScreenshot) {
             session.threeScreenshot?.let { threeScreenshot = it }
         }
         if (userNoNavbar) {
@@ -139,9 +118,5 @@ class SystemSettings(private val context: Context) {
 
     companion object {
         const val KEY_GAME_LIST = "gamespace_game_list"
-        const val KEY_HEADS_UP_DISABLE = "gamespace_heads_up_disabled"
-        const val KEY_AUTO_BRIGHTNESS_DISABLE = "gamespace_auto_brightness_disabled"
-        const val KEY_3SCREENSHOT_DISABLE = "gamespace_tfgesture_disabled"
-        const val KEY_NAVBAR_DISABLE = "gamespace_navbar_disabled"
     }
 }
