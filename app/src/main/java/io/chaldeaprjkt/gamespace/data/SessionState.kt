@@ -15,6 +15,7 @@
  */
 package io.chaldeaprjkt.gamespace.data
 
+import android.media.AudioManager
 import androidx.annotation.Keep
 
 @Keep
@@ -24,4 +25,5 @@ data class SessionState(
     var headsUp: Boolean? = null,
     var threeScreenshot: Boolean? = null,
     var navbarToggle: Boolean? = null,
+    var ringerMode: Int = AudioManager.RINGER_MODE_NORMAL,
 )
