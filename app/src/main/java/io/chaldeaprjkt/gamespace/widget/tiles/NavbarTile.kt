@@ -19,13 +19,10 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import io.chaldeaprjkt.gamespace.R
-import io.chaldeaprjkt.gamespace.data.SystemSettings
 
 class NavbarTile @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null
 ) : BaseTile(context, attrs) {
-
-    private val settings by lazy { SystemSettings(context) }
 
     init {
         isClickable = true
@@ -34,7 +31,7 @@ class NavbarTile @JvmOverloads constructor(
 
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
-        navbarEnabled = settings.navbarToggle
+        navbarEnabled = systemSettings.navbarToggle
         title?.text = context.getString(R.string.navbar_title)
         icon?.setImageResource(R.drawable.ic_action_navbar)
     }
@@ -47,7 +44,7 @@ class NavbarTile @JvmOverloads constructor(
             } else {
                 summary?.text = context.getString(R.string.state_disabled)
             }
-            settings.navbarToggle = value
+            systemSettings.navbarToggle = value
             isSelected = value
         }
 
