@@ -57,7 +57,7 @@
 
         <SwitchPreference
             android:defaultValue="false"
-            android:key="gamespace_navbar_disabled"
+            android:key="gamespace_navbar_disable"
             android:summary="@string/navbar_disabled_summary"
             android:title="@string/navbar_disabled_title" />
 
