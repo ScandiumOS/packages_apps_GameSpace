@@ -75,22 +75,6 @@ class SystemSettings @Inject constructor(
             Settings.System.putInt(resolver, Settings.System.FORCE_SHOW_NAVBAR, it.toInt())
         }
 
-    var suppressFullscreenIntent
-        get() = Settings.System.getIntForUser(
-            resolver,
-            Settings.System.GAMESPACE_SUPPRESS_FULLSCREEN_INTENT,
-            0,
-            UserHandle.USER_CURRENT
-        ) == 1
-        set(it) {
-            Settings.System.putIntForUser(
-                resolver,
-                Settings.System.GAMESPACE_SUPPRESS_FULLSCREEN_INTENT,
-                it.toInt(),
-                UserHandle.USER_CURRENT
-            )
-        }
-
     var userGames
         get() =
             Settings.System.getStringForUser(
