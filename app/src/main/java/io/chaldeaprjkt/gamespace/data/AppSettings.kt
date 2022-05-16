@@ -65,6 +65,10 @@ class AppSettings @Inject constructor(private val context: Context) {
         get() = db.getString(KEY_RINGER_MODE, "0").toInt()
         set(value) = db.edit().putString(KEY_RINGER_MODE, value.toString()).apply()
 
+    var menuOpacity: Int
+        get() = db.getInt(KEY_MENU_OPACITY, 75)
+        set(value) = db.edit().putInt(KEY_MENU_OPACITY, value).apply()
+
     companion object {
         const val KEY_HEADS_UP_DISABLE = "gamespace_heads_up_disabled"
         const val KEY_AUTO_BRIGHTNESS_DISABLE = "gamespace_auto_brightness_disabled"
@@ -72,5 +76,6 @@ class AppSettings @Inject constructor(private val context: Context) {
         const val KEY_NAVBAR_DISABLE = "gamespace_navbar_disable"
         const val KEY_STAY_AWAKE = "gamespace_stay_awake"
         const val KEY_RINGER_MODE = "gamespace_ringer_mode"
+        const val KEY_MENU_OPACITY = "gamespace_menu_opacity"
     }
 }
