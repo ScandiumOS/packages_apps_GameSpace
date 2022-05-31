@@ -44,6 +44,7 @@
     <string name="navbar_title">Navigation bar</string>
     <string name="fps_Info_title">FPS Info</string>
     <string name="stay_awake_title">Stay Awake</string>
+    <string name="lock_gesture_title">Lock gesture</string>
     <string name="stay_awake_summary">Keep screen awake while in the game</string>
 
     <string name="ringer_mode_title">In-game ringer mode</string>
