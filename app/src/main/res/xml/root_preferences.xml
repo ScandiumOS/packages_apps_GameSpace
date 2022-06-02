@@ -23,10 +23,6 @@
             app:lottie_rawRes="@raw/game_settings_illustration" />
 
     <PreferenceCategory android:title="In-game">
-        <SwitchPreference
-            android:key="gamespace_heads_up_disabled"
-            android:summary="@string/heads_up_disabled_summary"
-            android:title="@string/heads_up_disabled_title" />
 
         <ListPreference
             android:defaultValue="3"

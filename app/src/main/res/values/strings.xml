@@ -20,8 +20,6 @@
     <string name="app_selector_label">Pick your game</string>
     <string name="auto_brightness_disabled_title">Disable auto-brightness</string>
     <string name="auto_brightness_disabled_summary">Keep brightness settled while in-game</string>
-    <string name="heads_up_disabled_title">Disable heads-up</string>
-    <string name="heads_up_disabled_summary">Disable Notification heads-up while in-game</string>
     <string name="navbar_disabled_title">Disable navigation bar</string>
     <string name="navbar_disabled_summary">Disable navigation bar while in-game</string>
     <string name="game_list_title">Library</string>
@@ -38,7 +36,6 @@
     <string name="game_mode_standard">Standard</string>
     <string name="game_mode_performance">Performance</string>
     <string name="game_mode_battery">Battery</string>
-    <string name="heads_up_title">Heads-up</string>
     <string name="navbar_title">Navigation bar</string>
     <string name="fps_Info_title">FPS Info</string>
     <string name="stay_awake_title">Stay Awake</string>
