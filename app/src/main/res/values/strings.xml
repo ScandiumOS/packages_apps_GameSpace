@@ -70,4 +70,10 @@
 
     <string name="adb_disabled_summary">Temporary disable USB ADB debugging while in-game</string>
     <string name="adb_disabled_title">Disable USB debugging</string>
+
+    <!-- Notification Mode -->
+    <string name="notification_mode_title">Notification mode</string>
+    <string name="notification_mode_hide">Do not show</string>
+    <string name="notification_mode_headsup">Show as heads up</string>
+    <string name="notification_mode_reticker">Show as reTicker</string>
 </resources>
