@@ -76,13 +76,14 @@ class GameSession @Inject constructor(
         if (appSettings.noAdbEnabled) {
             systemSettings.adbEnabled = false
         }
-        if (appSettings.notificationMode == 0) {
+        if (appSettings.notificationMode == 0 || appSettings.notificationMode == 3) {
             systemSettings.headsUp = false
             systemSettings.reTicker = false
         } else if (appSettings.notificationMode == 1) {
             systemSettings.headsUp = true
             systemSettings.reTicker = false
         } else {
+            systemSettings.headsUp = true
             systemSettings.reTicker = true
         }
         if (appSettings.ringerMode != 3) {
@@ -104,9 +105,7 @@ class GameSession @Inject constructor(
         if (appSettings.noAdbEnabled) {
             orig.adbEnabled?.let { systemSettings.adbEnabled = it }
         }
-        if (appSettings.notificationMode != 2) {
-            orig.headsUp?.let { systemSettings.headsUp = it }
-        }
+        orig.headsUp?.let { systemSettings.headsUp = it }
         orig.reTicker?.let { systemSettings.reTicker = it }
         if (appSettings.ringerMode != 3) {
             audioManager.ringerModeInternal = orig.ringerMode

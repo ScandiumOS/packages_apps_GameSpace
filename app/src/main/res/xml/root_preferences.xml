@@ -25,7 +25,7 @@
     <PreferenceCategory android:title="In-game">
 
         <ListPreference
-            android:defaultValue="2"
+            android:defaultValue="3"
             android:entries="@array/notification_mode_entries"
             android:entryValues="@array/notification_mode_values"
             android:key="gamespace_notification_mode"
